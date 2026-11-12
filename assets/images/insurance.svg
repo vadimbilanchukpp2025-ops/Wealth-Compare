@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="300" viewBox="0 0 560 300" role="img" aria-label="insurance">
+<rect width="560" height="300" fill="#e1f1e6"/>
+<circle cx="480" cy="35" r="125" fill="#0a6b59" opacity=".07"/>
+<circle cx="72" cy="286" r="108" fill="#ffffff" opacity=".38"/>
+<path d="M0 278c115-55 215-36 325 4s167 13 235-19v37H0z" fill="#ffffff" opacity=".35"/>
+<path d="M280 62l111 40v65c0 74-43 118-111 151-68-33-111-77-111-151v-65z" fill="#fff"/><path d="M280 88l83 30v49c0 55-30 91-83 118-53-27-83-63-83-118v-49z" fill="#b7e4cb"/><path d="M236 176l31 31 61-64" fill="none" stroke="#0a6b59" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

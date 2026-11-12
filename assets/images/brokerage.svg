@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="300" viewBox="0 0 560 300" role="img" aria-label="brokerage">
+<rect width="560" height="300" fill="#dcefe8"/>
+<circle cx="480" cy="35" r="125" fill="#126f6c" opacity=".07"/>
+<circle cx="72" cy="286" r="108" fill="#ffffff" opacity=".38"/>
+<path d="M0 278c115-55 215-36 325 4s167 13 235-19v37H0z" fill="#ffffff" opacity=".35"/>
+<rect x="142" y="95" width="276" height="156" rx="20" fill="#fff"/><path d="M168 218h224" stroke="#b6d4cf" stroke-width="5"/><path d="M175 196l48-24 38 10 45-55 38 18 43-42" fill="none" stroke="#126f6c" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="387" cy="103" r="11" fill="#e9b95e"/>
+</svg>
