@@ -1,0 +1,728 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Wealth Compare — навчальний демонстраційний сайт для порівняння критеріїв фінансових продуктів і розрахунку орієнтовного доходу за депозитом."
+    />
+    <title>Wealth Compare — порівнюйте умови впевнено</title>
+    <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/tailwind.css" />
+    <link rel="stylesheet" href="custom-styles.css" />
+    <script src="js/app.js" defer></script>
+  </head>
+  <body class="bg-cream font-sans text-ink antialiased">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-white focus:px-4 focus:py-3 focus:text-forest focus:shadow-card"
+      >Перейти до вмісту</a
+    >
+
+    <header class="relative z-30 border-b border-line bg-white/95 backdrop-blur" id="home">
+      <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4 sm:px-8 lg:px-10">
+        <a
+          href="#home"
+          class="flex min-h-11 shrink-0 items-center gap-3 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-forest"
+          aria-label="Wealth Compare — на початок сторінки"
+        >
+          <img
+            src="assets/images/logo-mark.webp"
+            alt=""
+            width="40"
+            height="40"
+            class="h-10 w-10 object-contain"
+          />
+          <span class="font-display text-lg font-extrabold tracking-tight sm:text-xl md:hidden lg:inline"
+            >Wealth <span class="text-forest">Compare</span></span
+          >
+        </a>
+        <nav class="hidden items-center gap-1 md:flex" aria-label="Основна навігація">
+          <a
+            class="inline-flex min-h-11 items-center rounded-xl px-3 py-2 text-sm font-semibold text-ink transition-colors hover:bg-mint hover:text-forest focus-visible:bg-mint focus-visible:text-forest focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+            href="#products"
+            >Категорії</a
+          >
+          <div class="relative" data-dropdown>
+            <button
+              class="inline-flex min-h-11 items-center gap-1 rounded-xl px-3 py-2 text-sm font-semibold text-ink transition-colors hover:bg-mint hover:text-forest focus-visible:bg-mint focus-visible:text-forest focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+              type="button"
+              aria-expanded="false"
+              aria-controls="product-menu"
+              data-dropdown-toggle
+            >
+              Продукти <span aria-hidden="true">⌄</span>
+            </button>
+            <div
+              id="product-menu"
+              class="absolute left-0 top-full hidden w-60 rounded-xl border border-line bg-white p-2 shadow-card"
+              data-dropdown-menu
+            >
+              <a
+                class="flex min-h-11 items-center rounded-lg px-3 py-2 text-sm font-semibold text-ink transition-colors hover:bg-mint hover:text-forest focus-visible:bg-mint focus-visible:outline focus-visible:outline-2 focus-visible:outline-forest"
+                href="#compare"
+                >Калькулятор депозиту</a
+              >
+              <a
+                class="flex min-h-11 items-center rounded-lg px-3 py-2 text-sm font-semibold text-ink transition-colors hover:bg-mint hover:text-forest focus-visible:bg-mint focus-visible:outline focus-visible:outline-2 focus-visible:outline-forest"
+                href="#criteria"
+                >Критерії порівняння</a
+              >
+              <a
+                class="flex min-h-11 items-center rounded-lg px-3 py-2 text-sm font-semibold text-ink transition-colors hover:bg-mint hover:text-forest focus-visible:bg-mint focus-visible:outline focus-visible:outline-2 focus-visible:outline-forest"
+                href="#contact"
+                >Задати питання</a
+              >
+            </div>
+          </div>
+          <a
+            class="inline-flex min-h-11 items-center rounded-xl px-3 py-2 text-sm font-semibold text-ink transition-colors hover:bg-mint hover:text-forest focus-visible:bg-mint focus-visible:text-forest focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+            href="#how"
+            >Як це працює</a
+          >
+          <a
+            class="inline-flex min-h-11 items-center rounded-xl px-3 py-2 text-sm font-semibold text-ink transition-colors hover:bg-mint hover:text-forest focus-visible:bg-mint focus-visible:text-forest focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+            href="#about"
+            >Про проєкт</a
+          >
+          <a href="#media" class="hidden min-h-11 items-center rounded-xl px-3 py-2 text-sm font-semibold text-ink hover:text-forest focus-visible:outline focus-visible:outline-2 focus-visible:outline-forest xl:inline-flex">Медіа</a>
+        </nav>
+        <a
+          href="#products"
+          aria-label="Переглянути категорії"
+          class="hidden min-h-11 min-w-11 items-center justify-center rounded-xl bg-forest px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-forestDark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest md:inline-flex lg:px-5"
+          ><span class="hidden lg:inline">Переглянути категорії</span
+          ><span class="lg:ml-2" aria-hidden="true">↗</span></a
+        >
+        <button
+          id="menu-toggle"
+          class="inline-flex min-h-11 min-w-11 items-center justify-center rounded-xl border border-line text-ink transition-colors hover:bg-mint focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest md:hidden"
+          type="button"
+          aria-label="Відкрити меню"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span class="text-2xl leading-none" aria-hidden="true">☰</span>
+        </button>
+      </div>
+      <nav
+        id="mobile-menu"
+        class="hidden border-t border-line bg-white px-5 pb-5 pt-2 md:hidden"
+        aria-label="Мобільна навігація"
+      >
+        <div class="mx-auto flex max-w-7xl flex-col">
+          <a
+            class="flex min-h-11 items-center rounded-lg px-3 py-2 text-sm font-semibold text-ink transition-colors hover:bg-mint hover:text-forest focus-visible:bg-mint focus-visible:outline focus-visible:outline-2 focus-visible:outline-forest"
+            href="#products"
+            >Категорії</a
+          >
+          <a
+            class="flex min-h-11 items-center rounded-lg px-3 py-2 text-sm font-semibold text-ink transition-colors hover:bg-mint hover:text-forest focus-visible:bg-mint focus-visible:outline focus-visible:outline-2 focus-visible:outline-forest"
+            href="#compare"
+            >Калькулятор депозиту</a
+          >
+          <a
+            class="flex min-h-11 items-center rounded-lg px-3 py-2 text-sm font-semibold text-ink transition-colors hover:bg-mint hover:text-forest focus-visible:bg-mint focus-visible:outline focus-visible:outline-2 focus-visible:outline-forest"
+            href="#criteria"
+            >Критерії порівняння</a
+          >
+          <a
+            class="flex min-h-11 items-center rounded-lg px-3 py-2 text-sm font-semibold text-ink transition-colors hover:bg-mint hover:text-forest focus-visible:bg-mint focus-visible:outline focus-visible:outline-2 focus-visible:outline-forest"
+            href="#how"
+            >Як це працює</a
+          >
+          <a
+            class="flex min-h-11 items-center rounded-lg px-3 py-2 text-sm font-semibold text-ink transition-colors hover:bg-mint hover:text-forest focus-visible:bg-mint focus-visible:outline focus-visible:outline-2 focus-visible:outline-forest"
+            href="#about"
+            >Про проєкт</a
+          >
+          <a
+            class="flex min-h-11 items-center rounded-lg px-3 py-2 text-sm font-semibold text-ink transition-colors hover:bg-mint hover:text-forest focus-visible:bg-mint focus-visible:outline focus-visible:outline-2 focus-visible:outline-forest"
+            href="#contact"
+            >Контакти</a
+          >
+          <a href="#media" class="flex min-h-11 items-center rounded-lg px-3 py-2 text-sm font-semibold text-ink hover:text-forest focus-visible:outline focus-visible:outline-2 focus-visible:outline-forest">Медіа та карта</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero-surface overflow-hidden" aria-labelledby="hero-title">
+        <div
+          class="mx-auto grid max-w-7xl items-center gap-10 px-5 py-14 sm:px-8 md:py-20 lg:grid-cols-2 lg:gap-16 lg:px-10 lg:py-24"
+        >
+          <div>
+            <p
+              class="mb-5 inline-flex items-center gap-2 rounded-full border border-forest/20 bg-white/75 px-4 py-2 text-xs font-bold uppercase tracking-widest text-forest"
+            >
+              <span class="h-2 w-2 rounded-full bg-forest"></span> Фінансові рішення без зайвого шуму
+            </p>
+            <h1
+              id="hero-title"
+              class="font-display text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl"
+            >
+              Порівнюйте умови.<br /><span class="text-forest">Обирайте впевнено.</span>
+            </h1>
+            <p class="mt-6 max-w-xl text-base leading-8 text-muted sm:text-lg">
+              Шість категорій фінансових продуктів в одному місці. Дізнайтеся, які критерії варто порівняти,
+              та протестуйте демонстраційний калькулятор депозиту.
+            </p>
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a
+                href="#products"
+                class="inline-flex min-h-11 items-center justify-center rounded-xl bg-forest px-6 py-3 font-semibold text-white shadow-card transition-all hover:-translate-y-0.5 hover:bg-forestDark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+                >Переглянути категорії <span class="ml-2" aria-hidden="true">↗</span></a
+              >
+              <a
+                href="#how"
+                class="inline-flex min-h-11 items-center justify-center rounded-xl border border-line bg-white px-6 py-3 font-semibold text-ink transition-colors hover:border-forest hover:text-forest focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+                >Як це працює <span class="ml-2" aria-hidden="true">→</span></a
+              >
+            </div>
+            <div class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium text-muted">
+              <span>✓ Зрозумілі критерії</span><span>✓ Джерело та дата даних</span
+              ><span>✓ Без реєстрації</span>
+            </div>
+          </div>
+          <figure class="relative mx-auto w-full max-w-lg">
+            <div class="absolute inset-8 rounded-full bg-mint blur-3xl" aria-hidden="true"></div>
+            <img
+              src="assets/images/hero.webp"
+              fetchpriority="high"
+              width="768"
+              height="768"
+              alt="Ілюстрація фінансового зростання з монетою і стовпцями графіка"
+              class="relative w-full drop-shadow-2xl"
+            />
+            <figcaption
+              class="relative mx-auto -mt-7 w-fit rounded-2xl border border-line bg-white px-5 py-4 text-sm shadow-card"
+            >
+              <strong class="block text-ink">Чітка картина умов</strong
+              ><span class="text-muted">Ставка · комісії · строк</span>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section
+        id="products"
+        class="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:px-10 lg:py-24"
+        aria-labelledby="products-title"
+      >
+        <div class="mb-9 flex flex-col justify-between gap-5 md:flex-row md:items-end">
+          <div>
+            <p class="mb-3 text-xs font-extrabold uppercase tracking-widest text-forest">Продукти</p>
+            <h2 id="products-title" class="section-title">Почніть із того, що шукаєте</h2>
+          </div>
+          <p class="max-w-md leading-7 text-muted">
+            Оберіть категорію та дізнайтеся, які умови варто порівнювати перед рішенням.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <article
+            class="group flex min-w-0 flex-col overflow-hidden rounded-3xl border border-line bg-white shadow-card transition-all duration-300 focus-within:-translate-y-1 focus-within:shadow-lift hover:-translate-y-1 hover:shadow-lift"
+          >
+            <img
+              src="assets/images/deposits.svg"
+              alt="Монети й графік зростання"
+              width="560"
+              height="300"
+              loading="lazy"
+              class="block aspect-[14/7.5] w-full bg-mint object-cover"
+            />
+            <div class="flex flex-1 flex-col p-6">
+              <p class="text-xs font-extrabold uppercase tracking-widest text-forest">Заощадження</p>
+              <h3 class="mt-2 font-display text-xl font-extrabold">Депозити</h3>
+              <p class="mt-3 min-h-14 text-sm leading-7 text-muted">
+                Ставка, строк та умови дострокового зняття.
+              </p>
+              <p class="mt-4 text-xs text-muted">Приклад: очікуваний дохід</p>
+              <a
+                href="#compare"
+                class="mt-auto inline-flex min-h-11 items-center justify-between gap-4 pt-4 text-sm font-extrabold text-forest hover:text-forestDark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+                >Розрахувати <span aria-hidden="true">↗</span></a
+              >
+            </div>
+          </article>
+          <article
+            class="group flex min-w-0 flex-col overflow-hidden rounded-3xl border border-line bg-white shadow-card transition-all duration-300 focus-within:-translate-y-1 focus-within:shadow-lift hover:-translate-y-1 hover:shadow-lift"
+          >
+            <img
+              src="assets/images/brokerage.svg"
+              alt="Лінійний графік та інвестиційні стовпці"
+              width="560"
+              height="300"
+              loading="lazy"
+              class="block aspect-[14/7.5] w-full bg-mint object-cover"
+            />
+            <div class="flex flex-1 flex-col p-6">
+              <p class="text-xs font-extrabold uppercase tracking-widest text-forest">Інвестування</p>
+              <h3 class="mt-2 font-display text-xl font-extrabold">Брокерські рахунки</h3>
+              <p class="mt-3 min-h-14 text-sm leading-7 text-muted">
+                Комісії, доступні ринки та захист активів.
+              </p>
+              <p class="mt-4 text-xs text-muted">Ключове: повна вартість</p>
+              <a
+                href="#criteria"
+                class="mt-auto inline-flex min-h-11 items-center justify-between gap-4 pt-4 text-sm font-extrabold text-forest hover:text-forestDark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+                >Про критерії <span aria-hidden="true">↗</span></a
+              >
+            </div>
+          </article>
+          <article
+            class="group flex min-w-0 flex-col overflow-hidden rounded-3xl border border-line bg-white shadow-card transition-all duration-300 focus-within:-translate-y-1 focus-within:shadow-lift hover:-translate-y-1 hover:shadow-lift"
+          >
+            <img
+              src="assets/images/insurance.svg"
+              alt="Щит захисту з позначкою перевірки"
+              width="560"
+              height="300"
+              loading="lazy"
+              class="block aspect-[14/7.5] w-full bg-mint object-cover"
+            />
+            <div class="flex flex-1 flex-col p-6">
+              <p class="text-xs font-extrabold uppercase tracking-widest text-forest">Захист</p>
+              <h3 class="mt-2 font-display text-xl font-extrabold">Страхування</h3>
+              <p class="mt-3 min-h-14 text-sm leading-7 text-muted">Покриття, франшиза та важливі винятки.</p>
+              <p class="mt-4 text-xs text-muted">Ключове: межі покриття</p>
+              <a
+                href="#criteria"
+                class="mt-auto inline-flex min-h-11 items-center justify-between gap-4 pt-4 text-sm font-extrabold text-forest hover:text-forestDark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+                >Про критерії <span aria-hidden="true">↗</span></a
+              >
+            </div>
+          </article>
+          <article
+            class="group flex min-w-0 flex-col overflow-hidden rounded-3xl border border-line bg-white shadow-card transition-all duration-300 focus-within:-translate-y-1 focus-within:shadow-lift hover:-translate-y-1 hover:shadow-lift"
+          >
+            <img
+              src="assets/images/cards.svg"
+              alt="Кредитна картка та позначка платежу"
+              width="560"
+              height="300"
+              loading="lazy"
+              class="block aspect-[14/7.5] w-full bg-mint object-cover"
+            />
+            <div class="flex flex-1 flex-col p-6">
+              <p class="text-xs font-extrabold uppercase tracking-widest text-forest">Платежі</p>
+              <h3 class="mt-2 font-display text-xl font-extrabold">Кредитні картки</h3>
+              <p class="mt-3 min-h-14 text-sm leading-7 text-muted">
+                Пільговий період, ставка й регулярні платежі.
+              </p>
+              <p class="mt-4 text-xs text-muted">Ключове: умови після пільги</p>
+              <a
+                href="#criteria"
+                class="mt-auto inline-flex min-h-11 items-center justify-between gap-4 pt-4 text-sm font-extrabold text-forest hover:text-forestDark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+                >Про критерії <span aria-hidden="true">↗</span></a
+              >
+            </div>
+          </article>
+          <article
+            class="group flex min-w-0 flex-col overflow-hidden rounded-3xl border border-line bg-white shadow-card transition-all duration-300 focus-within:-translate-y-1 focus-within:shadow-lift hover:-translate-y-1 hover:shadow-lift"
+          >
+            <img
+              src="assets/images/savings.svg"
+              alt="Скарбничка й монети"
+              width="560"
+              height="300"
+              loading="lazy"
+              class="block aspect-[14/7.5] w-full bg-mint object-cover"
+            />
+            <div class="flex flex-1 flex-col p-6">
+              <p class="text-xs font-extrabold uppercase tracking-widest text-forest">Гнучкі кошти</p>
+              <h3 class="mt-2 font-display text-xl font-extrabold">Ощадні рахунки</h3>
+              <p class="mt-3 min-h-14 text-sm leading-7 text-muted">
+                Доступ до коштів, ставка та можливі ліміти.
+              </p>
+              <p class="mt-4 text-xs text-muted">Ключове: доступність грошей</p>
+              <a
+                href="#criteria"
+                class="mt-auto inline-flex min-h-11 items-center justify-between gap-4 pt-4 text-sm font-extrabold text-forest hover:text-forestDark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+                >Про критерії <span aria-hidden="true">↗</span></a
+              >
+            </div>
+          </article>
+          <article
+            class="group flex min-w-0 flex-col overflow-hidden rounded-3xl border border-line bg-white shadow-card transition-all duration-300 focus-within:-translate-y-1 focus-within:shadow-lift hover:-translate-y-1 hover:shadow-lift"
+          >
+            <img
+              src="assets/images/loans.svg"
+              alt="Документ позики з графіком виплат"
+              width="560"
+              height="300"
+              loading="lazy"
+              class="block aspect-[14/7.5] w-full bg-mint object-cover"
+            />
+            <div class="flex flex-1 flex-col p-6">
+              <p class="text-xs font-extrabold uppercase tracking-widest text-forest">Позики</p>
+              <h3 class="mt-2 font-display text-xl font-extrabold">Споживчі кредити</h3>
+              <p class="mt-3 min-h-14 text-sm leading-7 text-muted">
+                Повна вартість, строк та щомісячні платежі.
+              </p>
+              <p class="mt-4 text-xs text-muted">Ключове: всі комісії</p>
+              <a
+                href="#criteria"
+                class="mt-auto inline-flex min-h-11 items-center justify-between gap-4 pt-4 text-sm font-extrabold text-forest hover:text-forestDark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+                >Про критерії <span aria-hidden="true">↗</span></a
+              >
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="compare" class="bg-white py-16 lg:py-24" aria-labelledby="compare-title">
+        <div
+          class="mx-auto grid max-w-7xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-2 lg:gap-20 lg:px-10"
+        >
+          <div>
+            <p class="mb-3 text-xs font-extrabold uppercase tracking-widest text-forest">Швидка оцінка</p>
+            <h2 id="compare-title" class="section-title">Побачте результат у цифрах</h2>
+            <p class="mt-5 max-w-lg leading-8 text-muted">
+              Оцініть орієнтовний дохід депозиту. Розрахунок демонстраційний: податки, комісії та конкретні
+              умови банку тут не враховані.
+            </p>
+            <div class="mt-7 rounded-2xl border border-line bg-mint p-5">
+              <strong class="block">Прозорість важлива</strong>
+              <p class="mt-2 text-sm leading-6 text-muted">
+                Перед вибором продукту перевіряйте джерело даних, дату оновлення і повні умови.
+              </p>
+            </div>
+          </div>
+          <form
+            id="calculator"
+            class="rounded-3xl border border-line bg-cream p-6 shadow-card sm:p-8"
+            aria-label="Калькулятор депозиту"
+          >
+            <div class="mb-6 flex items-start justify-between gap-3">
+              <div>
+                <h3 class="font-display text-xl font-bold">Калькулятор депозиту</h3>
+                <p class="mt-1 text-sm text-muted">Орієнтовний простий відсоток</p>
+              </div>
+              <span
+                class="rounded-full bg-mint px-3 py-1 text-xs font-bold uppercase tracking-wide text-forest"
+                >Демо</span
+              >
+            </div>
+            <label class="mb-2 block text-sm font-bold" for="amount">Сума вкладу, ₴</label
+            ><input
+              class="block min-h-11 w-full rounded-xl border border-line bg-white px-4 py-3 text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+              id="amount"
+              name="amount"
+              type="number"
+              inputmode="decimal"
+              min="1000"
+              max="100000000"
+              step="1000"
+              value="100000"
+              required
+            />
+            <div class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
+              <div>
+                <label class="mb-2 block text-sm font-bold" for="months">Строк, місяців</label
+                ><input
+                  class="block min-h-11 w-full rounded-xl border border-line bg-white px-4 py-3 text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+                  id="months"
+                  name="months"
+                  type="number"
+                  min="1"
+                  max="120"
+                  step="1"
+                  value="12"
+                  required
+                />
+              </div>
+              <div>
+                <label class="mb-2 block text-sm font-bold" for="rate">Річна ставка, %</label
+                ><input
+                  class="block min-h-11 w-full rounded-xl border border-line bg-white px-4 py-3 text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+                  id="rate"
+                  name="rate"
+                  type="number"
+                  min="0"
+                  max="100"
+                  step="0.1"
+                  value="12"
+                  required
+                />
+              </div>
+            </div>
+            <button
+              type="submit"
+              class="mt-6 min-h-11 w-full rounded-xl bg-forest px-6 py-3 font-semibold text-white transition-colors hover:bg-forestDark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+            >
+              Розрахувати дохід
+            </button>
+            <output
+              id="result"
+              class="mt-6 block rounded-2xl border border-line bg-white p-5"
+              aria-live="polite"
+              ><span class="block text-sm text-muted">Орієнтовний дохід до оподаткування</span
+              ><strong id="result-value" class="mt-1 block font-display text-3xl text-forest"
+                >12 000 ₴</strong
+              ></output
+            >
+          </form>
+        </div>
+      </section>
+
+      <section
+        id="criteria"
+        class="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:px-10 lg:py-24"
+        aria-labelledby="criteria-title"
+      >
+        <p class="mb-3 text-xs font-extrabold uppercase tracking-widest text-forest">Чекліст</p>
+        <h2 id="criteria-title" class="section-title">Що порівнювати насправді</h2>
+        <div class="mt-8 grid grid-cols-1 gap-5 md:grid-cols-3">
+          <article class="rounded-2xl border border-line bg-white p-6">
+            <span
+              class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-mint font-extrabold text-forest"
+              >01</span
+            >
+            <h3 class="mt-4 font-display text-lg font-bold">Повна вартість</h3>
+            <p class="mt-2 leading-7 text-muted">
+              Зіставте ставки, комісії, регулярні платежі та умови їх зміни.
+            </p>
+          </article>
+          <article class="rounded-2xl border border-line bg-white p-6">
+            <span
+              class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-mint font-extrabold text-forest"
+              >02</span
+            >
+            <h3 class="mt-4 font-display text-lg font-bold">Обмеження</h3>
+            <p class="mt-2 leading-7 text-muted">
+              Перевірте строк, ліміти, штрафи, винятки й дострокове припинення.
+            </p>
+          </article>
+          <article class="rounded-2xl border border-line bg-white p-6">
+            <span
+              class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-mint font-extrabold text-forest"
+              >03</span
+            >
+            <h3 class="mt-4 font-display text-lg font-bold">Джерело даних</h3>
+            <p class="mt-2 leading-7 text-muted">
+              Шукайте офіційні умови та дату останнього оновлення інформації.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="how" class="bg-ink py-16 text-white lg:py-24" aria-labelledby="how-title">
+        <div class="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          <p class="mb-3 text-xs font-extrabold uppercase tracking-widest text-emerald-300">Як це працює</p>
+          <h2 id="how-title" class="section-title text-white">Три кроки до зрозумілого вибору</h2>
+          <ol class="mt-9 grid grid-cols-1 gap-5 md:grid-cols-3">
+            <li class="rounded-2xl border border-white/20 bg-white/5 p-6">
+              <span class="font-display text-3xl font-bold text-emerald-300">01</span>
+              <h3 class="mt-4 text-lg font-bold">Оберіть категорію</h3>
+              <p class="mt-2 leading-7 text-slate-300">Почніть із продукту, який відповідає вашій меті.</p>
+            </li>
+            <li class="rounded-2xl border border-white/20 bg-white/5 p-6">
+              <span class="font-display text-3xl font-bold text-emerald-300">02</span>
+              <h3 class="mt-4 text-lg font-bold">Зіставте умови</h3>
+              <p class="mt-2 leading-7 text-slate-300">Зверніть увагу на повну вартість та обмеження.</p>
+            </li>
+            <li class="rounded-2xl border border-white/20 bg-white/5 p-6">
+              <span class="font-display text-3xl font-bold text-emerald-300">03</span>
+              <h3 class="mt-4 text-lg font-bold">Перевірте джерело</h3>
+              <p class="mt-2 leading-7 text-slate-300">Підтвердіть актуальні умови в офіційному документі.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Video integration: the iframe keeps a 16:9 ratio at every viewport. -->
+      <section id="media" class="border-t border-line bg-white py-16 lg:py-24" aria-labelledby="media-title">
+        <div class="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          <p class="mb-3 text-xs font-extrabold uppercase tracking-widest text-forest">Медіа та дані</p>
+          <h2 id="media-title" class="section-title">Перевіряйте контекст перед вибором</h2>
+          <p class="mt-4 max-w-3xl leading-8 text-muted">
+            Навчальне відео пояснює, як зіставляти депозит, ОВДП і валюту. Поточні офіційні курси НБУ
+            наведено лише як довідкові дані: вони не є курсом купівлі чи продажу в банку.
+          </p>
+          <div class="mt-9 grid grid-cols-1 gap-8 lg:grid-cols-5 lg:items-start">
+            <article class="min-w-0 lg:col-span-3">
+              <h3 class="font-display text-xl font-bold">Як порівнювати варіанти заощадження</h3>
+              <div class="media-frame mt-4 overflow-hidden rounded-2xl shadow-card">
+                <iframe
+                  src="https://www.youtube-nocookie.com/embed/OcqQK3SDazw"
+                  title="Відео Мінфіну про порівняння депозиту, ОВДП і долара"
+                  loading="lazy"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <p class="mt-3 text-sm leading-6 text-muted">
+                Джерело: <a class="font-semibold text-forest underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-forest" href="https://news.finance.ua/ua/ovdp-depozyt-chy-dolar-shho-dast-bil-she-hroshey-video" target="_blank" rel="noopener noreferrer">Finance.ua, 2 вересня 2026 року</a>.
+                <a class="font-semibold text-forest underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-forest" href="https://www.youtube.com/watch?v=OcqQK3SDazw" target="_blank" rel="noopener noreferrer">Відкрити відео окремо</a>.
+              </p>
+            </article>
+            <!-- Dynamic widget: official NBU exchange-rate API, rendered accessibly. -->
+            <aside class="rounded-2xl border border-line bg-cream p-6 lg:col-span-2" aria-labelledby="rates-title">
+              <h3 id="rates-title" class="font-display text-xl font-bold">Офіційний курс НБУ</h3>
+              <p class="mt-2 text-sm leading-6 text-muted">Дані оновлюються з відкритого API НБУ. 1 одиниця валюти у гривнях.</p>
+              <dl id="exchange-rates" class="mt-5 grid gap-3" aria-busy="true">
+                <div class="flex items-center justify-between rounded-xl border border-line bg-white px-4 py-3"><dt class="font-bold">USD</dt><dd id="rate-usd">Завантаження…</dd></div>
+                <div class="flex items-center justify-between rounded-xl border border-line bg-white px-4 py-3"><dt class="font-bold">EUR</dt><dd id="rate-eur">Завантаження…</dd></div>
+              </dl>
+              <p id="rate-status" class="mt-4 text-sm leading-6 text-muted" role="status" aria-live="polite"></p>
+              <a class="mt-3 inline-flex min-h-11 items-center font-semibold text-forest underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-forest" href="https://bank.gov.ua/ua/markets/exchangerates" target="_blank" rel="noopener noreferrer">Перевірити на сайті НБУ ↗</a>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="about"
+        class="mx-auto grid max-w-7xl gap-8 px-5 py-16 sm:px-8 lg:grid-cols-2 lg:items-center lg:gap-16 lg:px-10 lg:py-24"
+        aria-labelledby="about-title"
+      >
+        <div>
+          <p class="mb-3 text-xs font-extrabold uppercase tracking-widest text-forest">Про проєкт</p>
+          <h2 id="about-title" class="section-title">Менше шуму. Більше ясності.</h2>
+        </div>
+        <div class="space-y-4 leading-8 text-muted">
+          <p>
+            Wealth Compare — навчальний прототип інтерфейсу для порівняння фінансових продуктів. Він показує
+            структуру та принципи відповідального порівняння, а не реальні пропозиції установ.
+          </p>
+          <p>
+            Калькулятор використовує спрощену формулу простих відсотків. Для реального рішення перевіряйте
+            умови безпосередньо у фінансовій установі.
+          </p>
+        </div>
+      </section>
+
+      <!-- Map integration: the university is the project context, not a business office. -->
+      <section id="location" class="border-t border-line bg-cream py-16 lg:py-24" aria-labelledby="location-title">
+        <div class="mx-auto grid max-w-7xl gap-8 px-5 sm:px-8 lg:grid-cols-2 lg:items-center lg:gap-12 lg:px-10">
+          <div>
+            <p class="mb-3 text-xs font-extrabold uppercase tracking-widest text-forest">Розташування</p>
+            <h2 id="location-title" class="section-title">Навчальний контекст проєкту</h2>
+            <p class="mt-4 max-w-lg leading-8 text-muted">Wealth Compare створено як студентський навчальний проєкт. Карта показує Національний університет «Львівська політехніка» у Львові, а не офіс фінансової установи.</p>
+            <a class="mt-4 inline-flex min-h-11 items-center font-semibold text-forest underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-forest" href="https://www.google.com/maps/search/?api=1&amp;query=Lviv+Polytechnic+National+University" target="_blank" rel="noopener noreferrer">Відкрити карту окремо ↗</a>
+          </div>
+          <div class="map-frame overflow-hidden rounded-2xl border border-line bg-white shadow-card">
+            <iframe
+              src="https://www.google.com/maps?q=Lviv+Polytechnic+National+University&amp;output=embed"
+              title="Карта розташування Національного університету Львівська політехніка"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="contact"
+        class="border-t border-line bg-white py-16 lg:py-24"
+        aria-labelledby="contact-title"
+      >
+        <div class="mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-2 lg:gap-20 lg:px-10">
+          <div>
+            <p class="mb-3 text-xs font-extrabold uppercase tracking-widest text-forest">Зворотний зв’язок</p>
+            <h2 id="contact-title" class="section-title">Маєте запитання?</h2>
+            <p class="mt-4 max-w-md leading-8 text-muted">
+              Залиште повідомлення в демоформі. Вона перевіряє введення локально й не надсилає дані на сервер.
+            </p>
+          </div>
+          <form id="contact-form" class="rounded-3xl border border-line bg-cream p-6 sm:p-8">
+            <label class="mb-2 block text-sm font-bold" for="contact-name">Ім’я</label
+            ><input
+              class="block min-h-11 w-full rounded-xl border border-line bg-white px-4 py-3 text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+              id="contact-name"
+              name="name"
+              autocomplete="name"
+              required
+            /><label class="mb-2 mt-5 block text-sm font-bold" for="contact-email">Електронна пошта</label
+            ><input
+              class="block min-h-11 w-full rounded-xl border border-line bg-white px-4 py-3 text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+              id="contact-email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              required
+            /><label class="mb-2 mt-5 block text-sm font-bold" for="contact-message">Повідомлення</label
+            ><textarea
+              class="block min-h-32 w-full resize-y rounded-xl border border-line bg-white px-4 py-3 text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+              id="contact-message"
+              name="message"
+              required
+            ></textarea
+            ><button
+              type="submit"
+              class="mt-6 min-h-11 w-full rounded-xl bg-forest px-6 py-3 font-semibold text-white transition-colors hover:bg-forestDark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+            >
+              Перевірити повідомлення
+            </button>
+            <p id="form-status" class="mt-4 text-sm text-forest" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-ink text-white">
+      <div
+        class="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-5 py-14 sm:px-8 md:grid-cols-2 lg:grid-cols-4 lg:px-10"
+      >
+        <div>
+          <a
+            href="#home"
+            class="inline-flex min-h-11 items-center gap-3 rounded-lg font-display text-lg font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            ><img src="assets/images/logo-mark.webp" alt="" width="36" height="36" class="h-9 w-9" /><span
+              >Wealth Compare</span
+            ></a
+          >
+          <p class="mt-4 text-sm leading-7 text-slate-300">
+            Навчальний прототип, який допомагає зрозуміти критерії вибору фінансових продуктів.
+          </p>
+        </div>
+        <div>
+          <h2 class="mb-4 font-display text-base font-extrabold">Навігація</h2>
+          <ul class="grid gap-1">
+            <li><a href="#products">Категорії</a></li>
+            <li><a href="#how">Як це працює</a></li>
+            <li><a href="#about">Про проєкт</a></li>
+            <li><a href="#media">Медіа та дані</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="mb-4 font-display text-base font-extrabold">Корисне</h2>
+          <ul class="grid gap-1">
+            <li><a href="#compare">Калькулятор</a></li>
+            <li><a href="#criteria">Критерії порівняння</a></li>
+            <li><a href="#contact">Зворотний зв’язок</a></li>
+            <li><a href="#location">Карта</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="mb-4 font-display text-base font-extrabold">Контакти</h2>
+          <p class="text-sm leading-7 text-slate-300">
+            Для демонстрації скористайтеся локальною формою на цій сторінці.
+          </p>
+          <a
+            class="mt-3 inline-flex min-h-11 items-center font-semibold text-emerald-300 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            href="#contact"
+            >Перейти до форми ↗</a
+          >
+        </div>
+      </div>
+      <div class="border-t border-white/15">
+        <div
+          class="mx-auto flex max-w-7xl flex-col justify-between gap-2 px-5 py-5 text-xs text-slate-400 sm:px-8 md:flex-row lg:px-10"
+        >
+          <span>© 2026 Wealth Compare · Навчальний проєкт</span
+          ><span>Не є фінансовою порадою чи каталогом реальних пропозицій</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
