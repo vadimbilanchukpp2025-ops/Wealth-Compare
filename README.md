@@ -4,6 +4,11 @@
 
 > Проєкт навчальний: сайт не надає фінансових пропозицій, форма є демонстраційною і нікуди не надсилає дані.
 
+## Демо
+
+- GitHub Pages: https://vadimbilanchukpp2025-ops.github.io/Wealth-Compare/
+- Vercel: https://wealth-compare-omega.vercel.app/
+
 ## Стек
 
 - HTML5, семантична розмітка, один `h1`
