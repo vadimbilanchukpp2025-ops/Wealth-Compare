@@ -34,6 +34,13 @@ npx serve .
 
 ЛР 8: репозиторій підготовлено до публікації на GitHub Pages та Netlify; сайт розгортається з гілки `main`.
 
+## Як долучитися
+
+1. `git clone https://github.com/vadimbilanchukpp2025-ops/Wealth-Compare.git`
+2. `git switch -c feature/<назва>` — окрема гілка для своєї частини
+3. Коміти за Conventional Commits (`feat:`, `fix:`, `docs:`, `style:`)
+4. `git pull` перед `git push`, потім Pull Request у `main`
+
 ## Автор
 
 Біланчук В. В., ст. гр. ПП-24, НУ «Львівська політехніка», 2026.
