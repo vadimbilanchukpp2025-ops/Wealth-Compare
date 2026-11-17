@@ -62,13 +62,7 @@ document.querySelector("#calculator").addEventListener("submit", (event) => {
   document.querySelector("#result-value").textContent = `${currency.format(income)} ₴`;
 });
 
-document.querySelector("#contact-form").addEventListener("submit", (event) => {
-  event.preventDefault();
-  const form = event.currentTarget;
-  if (!form.reportValidity()) return;
-  document.querySelector("#form-status").textContent =
-    "Поля заповнено коректно. Це демонстраційна форма; дані не надіслано.";
-});
+// Feedback form validation lives in js/validation.js (FeedbackForm class).
 
 // Dynamic third-party widget: public NBU API. No financial decision is made here.
 async function loadExchangeRates() {

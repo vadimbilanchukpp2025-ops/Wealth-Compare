@@ -15,9 +15,10 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/tailwind.css" /
+    <link rel="stylesheet" href="css/tailwind.css" />
     <link rel="stylesheet" href="custom-styles.css" />
     <script src="js/app.js" defer></script>
+    <script src="js/validation.js" defer></script>
   </head>
   <body class="bg-cream font-sans text-ink antialiased">
     <a
@@ -626,44 +627,159 @@
         class="border-t border-line bg-white py-16 lg:py-24"
         aria-labelledby="contact-title"
       >
-        <div class="mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-2 lg:gap-20 lg:px-10">
-          <div>
+        <div class="mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-5 lg:gap-16 lg:px-10">
+          <div class="lg:col-span-2">
             <p class="mb-3 text-xs font-extrabold uppercase tracking-widest text-forest">Зворотний зв’язок</p>
             <h2 id="contact-title" class="section-title">Маєте запитання?</h2>
             <p class="mt-4 max-w-md leading-8 text-muted">
-              Залиште повідомлення в демоформі. Вона перевіряє введення локально й не надсилає дані на сервер.
+              Залиште повідомлення в демоформі. Вона перевіряє введення у браузері й не надсилає дані на сервер.
             </p>
+            <ul class="mt-6 grid max-w-md gap-3 text-sm leading-6 text-muted">
+              <li class="flex gap-3"><span class="font-bold text-forest" aria-hidden="true">✓</span>Відповідаємо на запитання про критерії порівняння продуктів.</li>
+              <li class="flex gap-3"><span class="font-bold text-forest" aria-hidden="true">✓</span>Телефон у форматі +380XXXXXXXXX — 9 цифр після коду країни.</li>
+              <li class="flex gap-3"><span class="font-bold text-forest" aria-hidden="true">✓</span>Поля з позначкою * обов’язкові.</li>
+            </ul>
           </div>
-          <form id="contact-form" class="rounded-3xl border border-line bg-cream p-6 sm:p-8">
-            <label class="mb-2 block text-sm font-bold" for="contact-name">Ім’я</label
-            ><input
-              class="block min-h-11 w-full rounded-xl border border-line bg-white px-4 py-3 text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
-              id="contact-name"
-              name="name"
-              autocomplete="name"
-              required
-            /><label class="mb-2 mt-5 block text-sm font-bold" for="contact-email">Електронна пошта</label
-            ><input
-              class="block min-h-11 w-full rounded-xl border border-line bg-white px-4 py-3 text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
-              id="contact-email"
-              name="email"
-              type="email"
-              autocomplete="email"
-              required
-            /><label class="mb-2 mt-5 block text-sm font-bold" for="contact-message">Повідомлення</label
-            ><textarea
-              class="block min-h-32 w-full resize-y rounded-xl border border-line bg-white px-4 py-3 text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
-              id="contact-message"
-              name="message"
-              required
-            ></textarea
-            ><button
-              type="submit"
-              class="mt-6 min-h-11 w-full rounded-xl bg-forest px-6 py-3 font-semibold text-white transition-colors hover:bg-forestDark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
-            >
-              Перевірити повідомлення
-            </button>
-            <p id="form-status" class="mt-4 text-sm text-forest" role="status" aria-live="polite"></p>
+
+          <form
+            id="feedbackForm"
+            class="rounded-3xl border border-line bg-cream p-5 shadow-card sm:p-8 lg:col-span-3"
+            novalidate
+            aria-labelledby="contact-title"
+            aria-describedby="formNote"
+          >
+            <p id="formNote" class="mb-6 text-sm text-muted">
+              <span aria-hidden="true">*</span> — обов’язкове поле. Перевірка відбувається після того, як ви почали заповнювати поле.
+            </p>
+
+            <div class="grid grid-cols-1 gap-x-5 gap-y-5 md:grid-cols-2">
+              <div>
+                <label class="mb-2 block text-sm font-bold" for="username">Ім’я <span class="text-red-700" aria-hidden="true">*</span></label>
+                <div class="relative">
+                  <input
+                    class="block min-h-12 w-full rounded-xl border border-line bg-white py-3 pl-4 pr-11 text-base text-ink transition-colors duration-200 hover:border-muted focus:border-forest focus:outline-none focus:ring-4 focus:ring-forest/20"
+                    type="text"
+                    id="username"
+                    name="username"
+                    autocomplete="name"
+                    required
+                    aria-invalid="false"
+                    aria-describedby="usernameError"
+                  />
+                  <span data-success-icon class="pointer-events-none absolute right-4 top-1/2 hidden -translate-y-1/2 font-bold text-green-700" aria-hidden="true">✓</span>
+                </div>
+                <p id="usernameError" class="mt-2 hidden text-sm font-medium text-red-700"></p>
+              </div>
+
+              <div>
+                <label class="mb-2 block text-sm font-bold" for="email">Електронна пошта <span class="text-red-700" aria-hidden="true">*</span></label>
+                <div class="relative">
+                  <input
+                    class="block min-h-12 w-full rounded-xl border border-line bg-white py-3 pl-4 pr-11 text-base text-ink transition-colors duration-200 hover:border-muted focus:border-forest focus:outline-none focus:ring-4 focus:ring-forest/20"
+                    type="email"
+                    id="email"
+                    name="email"
+                    autocomplete="email"
+                    inputmode="email"
+                    spellcheck="false"
+                    required
+                    aria-invalid="false"
+                    aria-describedby="emailError"
+                  />
+                  <span data-success-icon class="pointer-events-none absolute right-4 top-1/2 hidden -translate-y-1/2 font-bold text-green-700" aria-hidden="true">✓</span>
+                </div>
+                <p id="emailError" class="mt-2 hidden text-sm font-medium text-red-700"></p>
+              </div>
+
+              <div>
+                <label class="mb-2 block text-sm font-bold" for="phone">Телефон <span class="text-red-700" aria-hidden="true">*</span></label>
+                <div class="relative">
+                  <input
+                    class="block min-h-12 w-full rounded-xl border border-line bg-white py-3 pl-4 pr-11 text-base text-ink transition-colors duration-200 hover:border-muted focus:border-forest focus:outline-none focus:ring-4 focus:ring-forest/20"
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    autocomplete="tel"
+                    inputmode="tel"
+                    placeholder="+380501234567"
+                    required
+                    aria-invalid="false"
+                    aria-describedby="phoneHint phoneError"
+                  />
+                  <span data-success-icon class="pointer-events-none absolute right-4 top-1/2 hidden -translate-y-1/2 font-bold text-green-700" aria-hidden="true">✓</span>
+                </div>
+                <p id="phoneHint" class="mt-2 text-xs text-muted">Формат: +380 і 9 цифр, без пробілів і дужок.</p>
+                <p id="phoneError" class="mt-2 hidden text-sm font-medium text-red-700"></p>
+                <button
+                  type="button"
+                  id="phoneFix"
+                  class="mt-2 hidden min-h-11 rounded-lg border border-forest bg-white px-3 py-2 text-sm font-semibold text-forest transition-colors hover:bg-mint focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+                ></button>
+              </div>
+
+              <div>
+                <label class="mb-2 block text-sm font-bold" for="topic">Тема</label>
+                <select
+                  class="block min-h-12 w-full rounded-xl border border-line bg-white px-4 py-3 text-base text-ink transition-colors duration-200 hover:border-muted focus:border-forest focus:outline-none focus:ring-4 focus:ring-forest/20"
+                  id="topic"
+                  name="topic"
+                >
+                  <option value="general">Загальне питання</option>
+                  <option value="deposits">Депозити</option>
+                  <option value="brokerage">Брокерські рахунки</option>
+                  <option value="insurance">Страхування</option>
+                  <option value="cards">Картки</option>
+                  <option value="savings">Ощадні рахунки</option>
+                  <option value="loans">Кредити</option>
+                </select>
+              </div>
+
+              <div class="md:col-span-2">
+                <div class="mb-2 flex items-baseline justify-between gap-4">
+                  <label class="block text-sm font-bold" for="message">Повідомлення <span class="text-red-700" aria-hidden="true">*</span></label>
+                  <span id="messageCounter" class="text-xs tabular-nums text-muted">0 / 1000</span>
+                </div>
+                <textarea
+                  class="block min-h-36 w-full resize-y rounded-xl border border-line bg-white px-4 py-3 text-base text-ink transition-colors duration-200 hover:border-muted focus:border-forest focus:outline-none focus:ring-4 focus:ring-forest/20"
+                  id="message"
+                  name="message"
+                  rows="5"
+                  required
+                  aria-invalid="false"
+                  aria-describedby="messageCounter messageError"
+                ></textarea>
+                <p id="messageError" class="mt-2 hidden text-sm font-medium text-red-700"></p>
+              </div>
+
+              <div class="md:col-span-2">
+                <div id="agreementBox" class="rounded-xl border border-transparent p-1 transition-colors">
+                  <label class="flex min-h-11 cursor-pointer items-start gap-3 text-sm leading-6" for="agreement">
+                    <input
+                      class="mt-0.5 h-5 w-5 shrink-0 cursor-pointer accent-forest focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+                      type="checkbox"
+                      id="agreement"
+                      name="agreement"
+                      required
+                      aria-invalid="false"
+                      aria-describedby="agreementError"
+                    />
+                    <span>Погоджуюся з обробкою введених даних відповідно до політики конфіденційності <span class="text-red-700" aria-hidden="true">*</span><span class="block text-xs text-muted">Демонстраційна форма: дані не надсилаються і не зберігаються.</span></span>
+                  </label>
+                </div>
+                <p id="agreementError" class="mt-1 hidden text-sm font-medium text-red-700"></p>
+              </div>
+            </div>
+
+            <div class="mt-7 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+              <p id="formStatus" class="text-sm font-medium text-red-700" role="status" aria-live="polite"></p>
+              <button
+                type="submit"
+                id="submitButton"
+                class="min-h-12 w-full rounded-xl bg-forest px-8 py-3 font-semibold text-white transition-colors duration-200 hover:bg-forestDark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest disabled:cursor-not-allowed disabled:opacity-60 md:w-auto md:shrink-0"
+              >
+                Надіслати
+              </button>
+            </div>
           </form>
         </div>
       </section>
@@ -724,5 +840,26 @@
         </div>
       </div>
     </footer>
+    <dialog
+      id="successModal"
+      class="w-[calc(100%-2.5rem)] max-w-md rounded-3xl border border-line bg-white p-0 text-ink shadow-lift backdrop:bg-ink/60 backdrop:backdrop-blur-sm"
+      aria-labelledby="successTitle"
+      aria-describedby="successText"
+    >
+      <div class="p-6 sm:p-8">
+        <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-full bg-mint text-2xl font-bold text-forest" aria-hidden="true">✓</div>
+        <h2 id="successTitle" class="font-display text-2xl font-extrabold leading-tight">Дякуємо! Повідомлення прийнято</h2>
+        <p id="successText" class="mt-3 leading-7 text-muted">
+          Форма успішно пройшла клієнтську валідацію. Це демонстрація успішного надсилання: дані нікуди не передано і не збережено.
+        </p>
+        <button
+          type="button"
+          id="successClose"
+          class="mt-7 min-h-12 w-full rounded-xl bg-forest px-6 py-3 font-semibold text-white transition-colors duration-200 hover:bg-forestDark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+        >
+          Закрити
+        </button>
+      </div>
+    </dialog>
   </body>
 </html>
