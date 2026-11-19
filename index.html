@@ -15,6 +15,9 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
+    <!-- ЛР 10: стилі плагінів через CDN (jsDelivr), версії зафіксовано -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11.2.10/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.css" />
     <link rel="stylesheet" href="css/tailwind.css" />
     <link rel="stylesheet" href="custom-styles.css" />
     <script src="js/app.js" defer></script>
@@ -75,6 +78,11 @@
                 class="flex min-h-11 items-center rounded-lg px-3 py-2 text-sm font-semibold text-ink transition-colors hover:bg-mint hover:text-forest focus-visible:bg-mint focus-visible:outline focus-visible:outline-2 focus-visible:outline-forest"
                 href="#criteria"
                 >Критерії порівняння</a
+              >
+              <a
+                class="flex min-h-11 items-center rounded-lg px-3 py-2 text-sm font-semibold text-ink transition-colors hover:bg-mint hover:text-forest focus-visible:bg-mint focus-visible:outline focus-visible:outline-2 focus-visible:outline-forest"
+                href="#guide"
+                >Путівник і галерея</a
               >
               <a
                 class="flex min-h-11 items-center rounded-lg px-3 py-2 text-sm font-semibold text-ink transition-colors hover:bg-mint hover:text-forest focus-visible:bg-mint focus-visible:outline focus-visible:outline-2 focus-visible:outline-forest"
@@ -171,6 +179,11 @@
             >
               Порівнюйте умови.<br /><span class="text-forest">Обирайте впевнено.</span>
             </h1>
+            <p class="typed-line mt-4 font-display text-xl font-bold text-ink sm:text-2xl">
+              <span class="text-muted">Дивіться на</span>
+              <span id="typedCriteria" class="text-forest" aria-hidden="true">ставку</span>
+              <span class="sr-only">ставку, комісії, строк, умови дострокового зняття та джерело даних</span>
+            </p>
             <p class="mt-6 max-w-xl text-base leading-8 text-muted sm:text-lg">
               Шість категорій фінансових продуктів в одному місці. Дізнайтеся, які критерії варто порівняти,
               та протестуйте демонстраційний калькулятор депозиту.
@@ -511,6 +524,171 @@
               Шукайте офіційні умови та дату останнього оновлення інформації.
             </p>
           </article>
+        </div>
+      </section>
+
+      <!-- ЛР 10: Swiper.js — слайдер-путівник «Питання перед підписанням договору» -->
+      <section id="guide" class="border-t border-line bg-white py-16 lg:py-24" aria-labelledby="guide-title">
+        <div class="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          <div class="mb-9 flex flex-col justify-between gap-5 md:flex-row md:items-end">
+            <div>
+              <p class="mb-3 text-xs font-extrabold uppercase tracking-widest text-forest">Путівник</p>
+              <h2 id="guide-title" class="section-title">Питання перед підписанням договору</h2>
+            </div>
+            <div class="flex gap-3" aria-label="Керування слайдером">
+              <button type="button" class="guide-prev inline-flex h-12 w-12 items-center justify-center rounded-xl border border-line bg-white text-xl text-ink transition-colors hover:border-forest hover:text-forest focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest disabled:opacity-40" aria-label="Попередній слайд">←</button>
+              <button type="button" class="guide-next inline-flex h-12 w-12 items-center justify-center rounded-xl border border-line bg-white text-xl text-ink transition-colors hover:border-forest hover:text-forest focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest disabled:opacity-40" aria-label="Наступний слайд">→</button>
+            </div>
+          </div>
+          <div class="swiper guide-swiper" aria-roledescription="carousel" aria-label="Питання за категоріями продуктів">
+            <div class="swiper-wrapper">
+              <article class="swiper-slide !h-auto">
+                <div class="flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-white shadow-card">
+                  <img src="assets/images/deposits.svg" alt="Монети й графік зростання" width="560" height="300" loading="lazy" class="block aspect-[14/7.5] w-full bg-mint object-cover" />
+                  <div class="flex flex-1 flex-col p-6">
+                    <p class="text-xs font-extrabold uppercase tracking-widest text-forest">Заощадження</p>
+                    <h3 class="mt-2 font-display text-xl font-extrabold">Депозити</h3>
+                    <ul class="mt-4 space-y-3 text-sm leading-6 text-muted">
+                    <li class="flex gap-3"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-forest" aria-hidden="true"></span><span>Ставка фіксована чи може змінитися протягом строку?</span></li>
+                    <li class="flex gap-3"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-forest" aria-hidden="true"></span><span>Що буде з відсотками при достроковому знятті?</span></li>
+                    <li class="flex gap-3"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-forest" aria-hidden="true"></span><span>Чи є гарантування Фондом гарантування вкладів і на яку суму?</span></li>
+                    </ul>
+                  </div>
+                </div>
+              </article>
+              <article class="swiper-slide !h-auto">
+                <div class="flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-white shadow-card">
+                  <img src="assets/images/brokerage.svg" alt="Лінійний графік та інвестиційні стовпці" width="560" height="300" loading="lazy" class="block aspect-[14/7.5] w-full bg-mint object-cover" />
+                  <div class="flex flex-1 flex-col p-6">
+                    <p class="text-xs font-extrabold uppercase tracking-widest text-forest">Інвестиції</p>
+                    <h3 class="mt-2 font-display text-xl font-extrabold">Брокерські рахунки</h3>
+                    <ul class="mt-4 space-y-3 text-sm leading-6 text-muted">
+                    <li class="flex gap-3"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-forest" aria-hidden="true"></span><span>Скільки коштує угода, зберігання цінних паперів і виведення?</span></li>
+                    <li class="flex gap-3"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-forest" aria-hidden="true"></span><span>Хто зберігач активів і де він зареєстрований?</span></li>
+                    <li class="flex gap-3"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-forest" aria-hidden="true"></span><span>Які ризики описано в документах про інструмент?</span></li>
+                    </ul>
+                  </div>
+                </div>
+              </article>
+              <article class="swiper-slide !h-auto">
+                <div class="flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-white shadow-card">
+                  <img src="assets/images/insurance.svg" alt="Щит захисту з позначкою перевірки" width="560" height="300" loading="lazy" class="block aspect-[14/7.5] w-full bg-mint object-cover" />
+                  <div class="flex flex-1 flex-col p-6">
+                    <p class="text-xs font-extrabold uppercase tracking-widest text-forest">Захист</p>
+                    <h3 class="mt-2 font-display text-xl font-extrabold">Страхування</h3>
+                    <ul class="mt-4 space-y-3 text-sm leading-6 text-muted">
+                    <li class="flex gap-3"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-forest" aria-hidden="true"></span><span>Які події є страховими, а які — винятками?</span></li>
+                    <li class="flex gap-3"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-forest" aria-hidden="true"></span><span>Яка франшиза і ліміт виплати?</span></li>
+                    <li class="flex gap-3"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-forest" aria-hidden="true"></span><span>Скільки днів на заяву і які документи потрібні?</span></li>
+                    </ul>
+                  </div>
+                </div>
+              </article>
+              <article class="swiper-slide !h-auto">
+                <div class="flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-white shadow-card">
+                  <img src="assets/images/cards.svg" alt="Кредитна картка та позначка платежу" width="560" height="300" loading="lazy" class="block aspect-[14/7.5] w-full bg-mint object-cover" />
+                  <div class="flex flex-1 flex-col p-6">
+                    <p class="text-xs font-extrabold uppercase tracking-widest text-forest">Щоденні платежі</p>
+                    <h3 class="mt-2 font-display text-xl font-extrabold">Картки</h3>
+                    <ul class="mt-4 space-y-3 text-sm leading-6 text-muted">
+                    <li class="flex gap-3"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-forest" aria-hidden="true"></span><span>Чи є плата за обслуговування і за яких умов вона зникає?</span></li>
+                    <li class="flex gap-3"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-forest" aria-hidden="true"></span><span>Скільки коштує зняття готівки й переказ на іншу картку?</span></li>
+                    <li class="flex gap-3"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-forest" aria-hidden="true"></span><span>Яка ставка після пільгового періоду (для кредитних карток)?</span></li>
+                    </ul>
+                  </div>
+                </div>
+              </article>
+              <article class="swiper-slide !h-auto">
+                <div class="flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-white shadow-card">
+                  <img src="assets/images/savings.svg" alt="Скарбничка й монети" width="560" height="300" loading="lazy" class="block aspect-[14/7.5] w-full bg-mint object-cover" />
+                  <div class="flex flex-1 flex-col p-6">
+                    <p class="text-xs font-extrabold uppercase tracking-widest text-forest">Накопичення</p>
+                    <h3 class="mt-2 font-display text-xl font-extrabold">Ощадні рахунки</h3>
+                    <ul class="mt-4 space-y-3 text-sm leading-6 text-muted">
+                    <li class="flex gap-3"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-forest" aria-hidden="true"></span><span>Як нараховуються відсотки: на щоденний чи мінімальний залишок?</span></li>
+                    <li class="flex gap-3"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-forest" aria-hidden="true"></span><span>Чи можна знімати кошти без втрати ставки?</span></li>
+                    <li class="flex gap-3"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-forest" aria-hidden="true"></span><span>Як часто банк може змінювати ставку?</span></li>
+                    </ul>
+                  </div>
+                </div>
+              </article>
+              <article class="swiper-slide !h-auto">
+                <div class="flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-white shadow-card">
+                  <img src="assets/images/loans.svg" alt="Документ позики з графіком виплат" width="560" height="300" loading="lazy" class="block aspect-[14/7.5] w-full bg-mint object-cover" />
+                  <div class="flex flex-1 flex-col p-6">
+                    <p class="text-xs font-extrabold uppercase tracking-widest text-forest">Позики</p>
+                    <h3 class="mt-2 font-display text-xl font-extrabold">Кредити</h3>
+                    <ul class="mt-4 space-y-3 text-sm leading-6 text-muted">
+                    <li class="flex gap-3"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-forest" aria-hidden="true"></span><span>Яка реальна річна процентна ставка з усіма комісіями?</span></li>
+                    <li class="flex gap-3"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-forest" aria-hidden="true"></span><span>Чи є штраф за дострокове погашення?</span></li>
+                    <li class="flex gap-3"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-forest" aria-hidden="true"></span><span>Що відбувається при простроченні платежу?</span></li>
+                    </ul>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="guide-pagination mt-8 flex justify-center"></div>
+          </div>
+          <p class="mt-4 text-center text-xs text-muted">Автопрогортання зупиняється, коли курсор над карткою або фокус усередині слайдера.</p>
+        </div>
+      </section>
+
+      <!-- ЛР 10: Fancybox v5 — галерея UI-активів проєкту (ЛР 3), один альбом data-fancybox="wc-assets" -->
+      <section id="gallery" class="border-t border-line bg-cream py-16 lg:py-24" aria-labelledby="gallery-title">
+        <div class="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          <p class="mb-3 text-xs font-extrabold uppercase tracking-widest text-forest">Галерея</p>
+          <h2 id="gallery-title" class="section-title">Візуальна мова Wealth Compare</h2>
+          <p class="mt-4 max-w-2xl leading-7 text-muted">Ілюстрації, створені для лендингу. Натисніть на зображення, щоб відкрити перегляд зі збільшенням і гортанням.</p>
+          <div class="mt-9 grid auto-rows-[8rem] grid-cols-2 gap-4 sm:auto-rows-[9rem] md:grid-cols-4">
+            <a href="assets/images/hero.webp" data-fancybox="wc-assets" data-caption="Головна ілюстрація hero-секції" data-width="768" data-height="768"
+              class="group relative block overflow-hidden rounded-2xl border border-line bg-mint focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest col-span-2 row-span-2"
+              aria-label="Відкрити зображення: Головна ілюстрація hero-секції">
+              <img src="assets/images/hero.webp" alt="" loading="lazy" class="h-full min-h-32 w-full cursor-zoom-in object-cover transition-transform duration-300 group-hover:scale-[1.04]" />
+              <span class="pointer-events-none absolute inset-x-2 bottom-2 rounded-lg bg-white/90 px-3 py-1.5 text-xs font-semibold text-ink opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">Головна ілюстрація hero-секції</span>
+            </a>
+            <a href="assets/images/deposits.svg" data-fancybox="wc-assets" data-caption="Депозити — ілюстрація картки категорії" data-width="560" data-height="300"
+              class="group relative block overflow-hidden rounded-2xl border border-line bg-mint focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+              aria-label="Відкрити зображення: Депозити — ілюстрація картки категорії">
+              <img src="assets/images/deposits.svg" alt="" loading="lazy" class="h-full min-h-32 w-full cursor-zoom-in object-cover transition-transform duration-300 group-hover:scale-[1.04]" />
+              <span class="pointer-events-none absolute inset-x-2 bottom-2 rounded-lg bg-white/90 px-3 py-1.5 text-xs font-semibold text-ink opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">Депозити — ілюстрація картки категорії</span>
+            </a>
+            <a href="assets/images/brokerage.svg" data-fancybox="wc-assets" data-caption="Брокерські рахунки — ілюстрація картки категорії" data-width="560" data-height="300"
+              class="group relative block overflow-hidden rounded-2xl border border-line bg-mint focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+              aria-label="Відкрити зображення: Брокерські рахунки — ілюстрація картки категорії">
+              <img src="assets/images/brokerage.svg" alt="" loading="lazy" class="h-full min-h-32 w-full cursor-zoom-in object-cover transition-transform duration-300 group-hover:scale-[1.04]" />
+              <span class="pointer-events-none absolute inset-x-2 bottom-2 rounded-lg bg-white/90 px-3 py-1.5 text-xs font-semibold text-ink opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">Брокерські рахунки — ілюстрація картки категорії</span>
+            </a>
+            <a href="assets/images/insurance.svg" data-fancybox="wc-assets" data-caption="Страхування — ілюстрація картки категорії" data-width="560" data-height="300"
+              class="group relative block overflow-hidden rounded-2xl border border-line bg-mint focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+              aria-label="Відкрити зображення: Страхування — ілюстрація картки категорії">
+              <img src="assets/images/insurance.svg" alt="" loading="lazy" class="h-full min-h-32 w-full cursor-zoom-in object-cover transition-transform duration-300 group-hover:scale-[1.04]" />
+              <span class="pointer-events-none absolute inset-x-2 bottom-2 rounded-lg bg-white/90 px-3 py-1.5 text-xs font-semibold text-ink opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">Страхування — ілюстрація картки категорії</span>
+            </a>
+            <a href="assets/images/cards.svg" data-fancybox="wc-assets" data-caption="Картки — ілюстрація картки категорії" data-width="560" data-height="300"
+              class="group relative block overflow-hidden rounded-2xl border border-line bg-mint focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+              aria-label="Відкрити зображення: Картки — ілюстрація картки категорії">
+              <img src="assets/images/cards.svg" alt="" loading="lazy" class="h-full min-h-32 w-full cursor-zoom-in object-cover transition-transform duration-300 group-hover:scale-[1.04]" />
+              <span class="pointer-events-none absolute inset-x-2 bottom-2 rounded-lg bg-white/90 px-3 py-1.5 text-xs font-semibold text-ink opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">Картки — ілюстрація картки категорії</span>
+            </a>
+            <a href="assets/images/savings.svg" data-fancybox="wc-assets" data-caption="Ощадні рахунки — ілюстрація картки категорії" data-width="560" data-height="300"
+              class="group relative block overflow-hidden rounded-2xl border border-line bg-mint focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+              aria-label="Відкрити зображення: Ощадні рахунки — ілюстрація картки категорії">
+              <img src="assets/images/savings.svg" alt="" loading="lazy" class="h-full min-h-32 w-full cursor-zoom-in object-cover transition-transform duration-300 group-hover:scale-[1.04]" />
+              <span class="pointer-events-none absolute inset-x-2 bottom-2 rounded-lg bg-white/90 px-3 py-1.5 text-xs font-semibold text-ink opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">Ощадні рахунки — ілюстрація картки категорії</span>
+            </a>
+            <a href="assets/images/loans.svg" data-fancybox="wc-assets" data-caption="Кредити — ілюстрація картки категорії" data-width="560" data-height="300"
+              class="group relative block overflow-hidden rounded-2xl border border-line bg-mint focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+              aria-label="Відкрити зображення: Кредити — ілюстрація картки категорії">
+              <img src="assets/images/loans.svg" alt="" loading="lazy" class="h-full min-h-32 w-full cursor-zoom-in object-cover transition-transform duration-300 group-hover:scale-[1.04]" />
+              <span class="pointer-events-none absolute inset-x-2 bottom-2 rounded-lg bg-white/90 px-3 py-1.5 text-xs font-semibold text-ink opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">Кредити — ілюстрація картки категорії</span>
+            </a>
+            <a href="assets/images/logo-mark.webp" data-fancybox="wc-assets" data-caption="Логотип-знак Wealth Compare"
+              class="group relative block overflow-hidden rounded-2xl border border-line bg-mint focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest col-span-2 bg-white"
+              aria-label="Відкрити зображення: Логотип-знак Wealth Compare">
+              <img src="assets/images/logo-mark.webp" alt="" loading="lazy" class="h-full min-h-32 w-full cursor-zoom-in object-contain p-4 transition-transform duration-300 group-hover:scale-[1.04]" />
+              <span class="pointer-events-none absolute inset-x-2 bottom-2 rounded-lg bg-white/90 px-3 py-1.5 text-xs font-semibold text-ink opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">Логотип-знак Wealth Compare</span>
+            </a>
+          </div>
         </div>
       </section>
 
@@ -861,5 +1039,10 @@
         </button>
       </div>
     </dialog>
+    <!-- ЛР 10: JS-плагіни через CDN перед </body>; власна ініціалізація — після них -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11.2.10/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="js/plugins.js"></script>
   </body>
 </html>

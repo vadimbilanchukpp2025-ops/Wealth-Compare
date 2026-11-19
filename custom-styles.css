@@ -70,3 +70,53 @@ footer ul a:focus-visible {
     animation-duration: 0.01ms !important;
   }
 }
+
+/* ЛР 10. Плагіни Swiper / Fancybox / Typed.js */
+/* FOUC: до ініціалізації (або якщо CDN недоступний) слайди не складаються стовпчиком,
+   а стоять у ряд з горизонтальною прокруткою та scroll-snap. */
+.guide-swiper:not(.swiper-initialized) .swiper-wrapper {
+  display: flex; /* без swiper-bundle.css обгортка не є flex-контейнером */
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 1rem;
+}
+.guide-swiper:not(.swiper-initialized) .swiper-slide {
+  width: min(85%, 22rem);
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+/* Власні крапки пагінації в кольорах бренду; 24 px зона натискання */
+.guide-bullet {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin: 0 2px;
+  border-radius: 999px;
+  cursor: pointer;
+  background: radial-gradient(circle, #b5cfc2 0 5px, transparent 6px);
+  transition: background 0.2s;
+}
+.guide-bullet-active {
+  background: radial-gradient(circle, #0b6e4f 0 6px, transparent 7px);
+}
+.guide-bullet:focus-visible {
+  outline: 2px solid #0b6e4f;
+  outline-offset: 2px;
+}
+/* Typed.js: фіксована висота рядка, щоб текст під ним не «стрибав» при стиранні */
+.typed-line {
+  min-height: 2lh; /* на 375 px «умови дострокового зняття» переноситься на 2-й рядок */
+}
+@media (min-width: 640px) {
+  .typed-line {
+    min-height: 1lh;
+  }
+}
+.typed-cursor {
+  color: #0b6e4f;
+  font-weight: 400;
+}
+/* Fancybox: фон оверлею в кольорі теми */
+.fancybox__container {
+  --fancybox-bg: rgba(16, 43, 50, 0.92);
+}
