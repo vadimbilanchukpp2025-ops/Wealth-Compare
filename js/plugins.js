@@ -46,7 +46,7 @@ class MediaWidgets {
     this.swiper = new Swiper(root, {
       slidesPerView: 1,
       spaceBetween: 16,
-      speed: 600, // тривалість анімації переходу, мс
+      speed: this.reducedMotion ? 0 : 600, // тривалість анімації переходу, мс; при reduced motion — миттєва зміна без руху
       loop: true,
       grabCursor: true,
       watchOverflow: true,
@@ -58,9 +58,8 @@ class MediaWidgets {
         paginationBulletMessage: "Перейти до слайда {{index}}",
         slideLabelMessage: "{{index}} з {{slidesLength}}",
       },
-      autoplay: this.reducedMotion
-        ? false
-        : { delay: 5000, disableOnInteraction: false, pauseOnMouseEnter: true }, // пауза між слайдами, мс
+      // пауза між слайдами, мс; автоплей зупиняється наведенням і фокусом (WCAG 2.2.2 «Pause, Stop, Hide»)
+      autoplay: { delay: 5000, disableOnInteraction: false, pauseOnMouseEnter: true },
       navigation: { nextEl: ".guide-next", prevEl: ".guide-prev" },
       pagination: {
         el: ".guide-pagination",
@@ -80,7 +79,7 @@ class MediaWidgets {
   // pauseOnMouseEnter працює лише для миші; для клавіатури зупиняємо автоплей, поки фокус у секції
   // (стрілки навігації стоять у заголовку секції, поза .guide-swiper, тому слухаємо всю секцію).
   pauseAutoplayOnFocus(root) {
-    if (!this.swiper.autoplay || this.reducedMotion) return;
+    if (!this.swiper.autoplay) return;
     root.addEventListener("focusin", () => this.swiper.autoplay.stop());
     root.addEventListener("focusout", (event) => {
       if (!root.contains(event.relatedTarget)) this.swiper.autoplay.start();
@@ -113,10 +112,6 @@ class MediaWidgets {
       this.status.typed = "cdn-missing"; // у розмітці вже стоїть статичне слово «ставку»
       return;
     }
-    if (this.reducedMotion) {
-      this.status.typed = "reduced-motion"; // без анімації друку для prefers-reduced-motion
-      return;
-    }
     target.textContent = "";
     this.typed = new Typed(target, {
       strings: MediaWidgets.TYPED_STRINGS,
@@ -127,6 +122,7 @@ class MediaWidgets {
       smartBackspace: true,
       loop: true,
       cursorChar: "|",
+      showCursor: !this.reducedMotion, // при reduced motion — без блимання курсора
     });
     this.status.typed = "ok";
   }

@@ -8,6 +8,7 @@
       content="Wealth Compare — навчальний демонстраційний сайт для порівняння критеріїв фінансових продуктів і розрахунку орієнтовного доходу за депозитом."
     />
     <title>Wealth Compare — порівнюйте умови впевнено</title>
+    <link rel="canonical" href="https://wealth-compare-omega.vercel.app/" />
     <link rel="icon" type="image/png" href="assets/images/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -535,7 +536,7 @@
               <p class="mb-3 text-xs font-extrabold uppercase tracking-widest text-forest">Путівник</p>
               <h2 id="guide-title" class="section-title">Питання перед підписанням договору</h2>
             </div>
-            <div class="flex gap-3" aria-label="Керування слайдером">
+            <div class="flex gap-3" role="group" aria-label="Керування слайдером">
               <button type="button" class="guide-prev inline-flex h-12 w-12 items-center justify-center rounded-xl border border-line bg-white text-xl text-ink transition-colors hover:border-forest hover:text-forest focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest disabled:opacity-40" aria-label="Попередній слайд">←</button>
               <button type="button" class="guide-next inline-flex h-12 w-12 items-center justify-center rounded-xl border border-line bg-white text-xl text-ink transition-colors hover:border-forest hover:text-forest focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest disabled:opacity-40" aria-label="Наступний слайд">→</button>
             </div>
@@ -636,7 +637,7 @@
       <!-- ЛР 10: Fancybox v5 — галерея UI-активів проєкту (ЛР 3), один альбом data-fancybox="wc-assets" -->
       <section id="gallery" class="border-t border-line bg-cream py-16 lg:py-24" aria-labelledby="gallery-title">
         <div class="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <p class="mb-3 text-xs font-extrabold uppercase tracking-widest text-forest">Галерея</p>
+          <p class="mb-3 text-xs font-extrabold uppercase tracking-widest text-forest">Галерея робіт</p>
           <h2 id="gallery-title" class="section-title">Візуальна мова Wealth Compare</h2>
           <p class="mt-4 max-w-2xl leading-7 text-muted">Ілюстрації, створені для лендингу. Натисніть на зображення, щоб відкрити перегляд зі збільшенням і гортанням.</p>
           <div class="mt-9 grid auto-rows-[8rem] grid-cols-2 gap-4 sm:auto-rows-[9rem] md:grid-cols-4">
@@ -734,7 +735,7 @@
                   title="Відео Мінфіну про порівняння депозиту, ОВДП і долара"
                   loading="lazy"
                   referrerpolicy="strict-origin-when-cross-origin"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowfullscreen
                 ></iframe>
               </div>
