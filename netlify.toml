@@ -13,3 +13,10 @@
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=604800"
+
+# ЛР 11: курс НБУ через той самий origin — API НБУ не завжди повертає Access-Control-Allow-Origin
+[[redirects]]
+  from = "/api/nbu-rates"
+  to = "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchangenew?json"
+  status = 200
+  force = true

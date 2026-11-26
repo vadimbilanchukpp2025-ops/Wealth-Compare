@@ -65,13 +65,19 @@ document.querySelector("#calculator").addEventListener("submit", (event) => {
 // Feedback form validation lives in js/validation.js (FeedbackForm class).
 
 // Dynamic third-party widget: public NBU API. No financial decision is made here.
+// ЛР 11 (QA у продакшні): API НБУ іноді відповідає без Access-Control-Allow-Origin → CORS-помилка в Console.
+// На Vercel/Netlify запит іде через rewrite того ж origin (vercel.json / netlify.toml), CORS не потрібен.
+const NBU_URL = /\.(vercel|netlify)\.app$/.test(location.hostname)
+  ? "/api/nbu-rates"
+  : "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchangenew?json";
+
 async function loadExchangeRates() {
   const list = document.querySelector("#exchange-rates");
   const status = document.querySelector("#rate-status");
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 8000);
   try {
-    const response = await fetch("https://bank.gov.ua/NBUStatService/v1/statdirectory/exchangenew?json", {
+    const response = await fetch(NBU_URL, {
       signal: controller.signal,
     });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
