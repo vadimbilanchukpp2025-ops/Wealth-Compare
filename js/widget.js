@@ -102,7 +102,12 @@
       this.out = (name) => root.querySelector(`[data-sp-out="${name}"]`);
       this.progressBox = root.querySelector("[data-sp-progress]");
       this.frame = 0;
-      this.ready = Object.values(this.inputs).every(Boolean) && Boolean(this.out("total"));
+      this.announceTimer = 0;
+      this.live = root.querySelector("[data-sp-live]");
+      this.taxHint = root.querySelector("[data-sp-tax-hint]");
+      // аудит P8: перевіряємо ВСІ елементи, у які пише render(), а не лише total
+      const outputs = ["total", "contributed", "interest", "tax", "bar", "goalText"].map((name) => this.out(name));
+      this.ready = Object.values(this.inputs).every(Boolean) && outputs.every(Boolean);
     }
 
     init() {
@@ -156,9 +161,13 @@
 
     readProduct() {
       const select = this.inputs.product;
-      if (Object.hasOwn(PRODUCTS, select.value)) return select.value;
-      select.value = DEFAULT_PRODUCT; // підмінене значення select → безпечне значення за замовченням
-      return DEFAULT_PRODUCT;
+      if (!Object.hasOwn(PRODUCTS, select.value)) select.value = DEFAULT_PRODUCT; // підмінене значення → безпечне за замовченням
+      const product = select.value;
+      // аудит P8: для ОВДП податок не застосовується — блокуємо checkbox і пояснюємо чому
+      const taxable = PRODUCTS[product].taxable;
+      this.inputs.tax.disabled = !taxable;
+      this.taxHint?.classList.toggle("hidden", taxable);
+      return product;
     }
 
     showFieldError(name, message) {
@@ -175,6 +184,7 @@
     }
 
     render() {
+      const product = this.readProduct(); // стан checkbox податку оновлюється навіть при помилках у полях
       const values = {};
       let valid = true;
       for (const name of Object.keys(LIMITS)) {
@@ -189,7 +199,7 @@
       try {
         const result = calculateSavings({
           ...values,
-          product: this.readProduct(),
+          product,
           capitalize: this.inputs.capitalize.checked,
           tax: this.inputs.tax.checked,
         });
@@ -215,6 +225,14 @@
       }
       this.out("goalText").textContent = text;
       this.setStatus("");
+      this.announce(`Сума в кінці строку ${money.format(result.total)} гривень. ${text}`);
+    }
+
+    /** аудит P8: екранний читач озвучує підсумок один раз після паузи, а не 60 разів за секунду під час руху повзунка. */
+    announce(message) {
+      if (!this.live) return;
+      clearTimeout(this.announceTimer);
+      this.announceTimer = setTimeout(() => { this.live.textContent = message; }, 600);
     }
 
     renderEmpty(message) {
@@ -223,6 +241,7 @@
       this.progressBox?.setAttribute("aria-valuenow", "0");
       this.out("goalText").textContent = "—";
       this.setStatus(message);
+      this.announce(message);
     }
 
     setStatus(message) {
