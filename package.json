@@ -2,7 +2,7 @@
   "name": "wealth-compare",
   "private": true,
   "version": "1.0.0",
-  "description": "Навчальний лендинг Wealth Compare (ЛР 7-10)",
+  "description": "Навчальний лендинг Wealth Compare (ЛР 7-11)",
   "scripts": {
     "build:css": "tailwindcss -i src/tailwind-input.css -o css/tailwind.css --config src/tailwind.config.cjs --minify",
     "start": "npx serve ."

@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="custom-styles.css" />
     <script src="js/app.js" defer></script>
     <script src="js/validation.js" defer></script>
+    <script src="js/widget.js" defer></script>
   </head>
   <body class="bg-cream font-sans text-ink antialiased">
     <a
@@ -74,6 +75,11 @@
                 class="flex min-h-11 items-center rounded-lg px-3 py-2 text-sm font-semibold text-ink transition-colors hover:bg-mint hover:text-forest focus-visible:bg-mint focus-visible:outline focus-visible:outline-2 focus-visible:outline-forest"
                 href="#compare"
                 >Калькулятор депозиту</a
+              >
+              <a
+                class="flex min-h-11 items-center rounded-lg px-3 py-2 text-sm font-semibold text-ink transition-colors hover:bg-mint hover:text-forest focus-visible:bg-mint focus-visible:outline focus-visible:outline-2 focus-visible:outline-forest"
+                href="#planner"
+                >Планувальник накопичень</a
               >
               <a
                 class="flex min-h-11 items-center rounded-lg px-3 py-2 text-sm font-semibold text-ink transition-colors hover:bg-mint hover:text-forest focus-visible:bg-mint focus-visible:outline focus-visible:outline-2 focus-visible:outline-forest"
@@ -137,6 +143,11 @@
             class="flex min-h-11 items-center rounded-lg px-3 py-2 text-sm font-semibold text-ink transition-colors hover:bg-mint hover:text-forest focus-visible:bg-mint focus-visible:outline focus-visible:outline-2 focus-visible:outline-forest"
             href="#compare"
             >Калькулятор депозиту</a
+          >
+          <a
+            class="flex min-h-11 items-center rounded-lg px-3 py-2 text-sm font-semibold text-ink transition-colors hover:bg-mint hover:text-forest focus-visible:bg-mint focus-visible:outline focus-visible:outline-2 focus-visible:outline-forest"
+            href="#planner"
+            >Планувальник накопичень</a
           >
           <a
             class="flex min-h-11 items-center rounded-lg px-3 py-2 text-sm font-semibold text-ink transition-colors hover:bg-mint hover:text-forest focus-visible:bg-mint focus-visible:outline focus-visible:outline-2 focus-visible:outline-forest"
@@ -483,6 +494,141 @@
                 >12 000 ₴</strong
               ></output
             >
+          </form>
+        </div>
+      </section>
+
+      <!-- ЛР 11: інтерактивний віджет «Планувальник накопичень» (js/widget.js) -->
+      <section id="planner" class="border-t border-line bg-cream py-16 lg:py-24" aria-labelledby="planner-title">
+        <div class="mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-2 lg:gap-16 lg:px-10">
+          <div>
+            <p class="mb-3 text-xs font-extrabold uppercase tracking-widest text-forest">Інтерактивний віджет</p>
+            <h2 id="planner-title" class="section-title">Планувальник накопичень</h2>
+            <p class="mt-5 max-w-lg leading-8 text-muted">
+              Змініть стартову суму, щомісячне поповнення, строк і продукт — підсумок перераховується одразу, без
+              кнопки «Розрахувати». Віджет показує, скільки ви внесете самі, скільки дадуть відсотки після податку
+              і коли буде досягнута ваша ціль.
+            </p>
+            <ul class="mt-7 grid gap-3 text-sm leading-6 text-muted">
+              <li class="rounded-2xl border border-line bg-white p-4">
+                <strong class="block text-ink">Демонстраційні ставки</strong>
+                Накопичувальний рахунок — 10 %, депозит — 12 %, ОВДП — 15 % річних.
+              </li>
+              <li class="rounded-2xl border border-line bg-white p-4">
+                <strong class="block text-ink">Податки</strong>
+                18 % ПДФО + 5 % військовий збір = 23 % з доходу. Дохід за ОВДП податком не обкладається.
+              </li>
+              <li class="rounded-2xl border border-line bg-white p-4">
+                <strong class="block text-ink">Капіталізація</strong>
+                Увімкнена — відсотки щомісяця додаються до тіла вкладу; вимкнена — виплачуються окремо.
+              </li>
+            </ul>
+          </div>
+
+          <form
+            id="savings-planner"
+            data-savings-planner
+            class="rounded-3xl border border-line bg-white p-5 shadow-card sm:p-8"
+            aria-labelledby="sp-title"
+            novalidate
+          >
+            <div class="mb-6 flex items-start justify-between gap-3">
+              <div>
+                <h3 id="sp-title" class="font-display text-xl font-bold">Ваш план</h3>
+                <p class="mt-1 text-sm text-muted">Щомісячне нарахування відсотків</p>
+              </div>
+              <span class="rounded-full bg-mint px-3 py-1 text-xs font-bold uppercase tracking-wide text-forest">Демо</span>
+            </div>
+
+            <div class="mb-6 flex flex-wrap gap-2" role="group" aria-label="Готові сценарії">
+              <button type="button" data-sp-preset="cushion" class="min-h-11 rounded-xl border border-line px-3 py-2 text-sm font-semibold text-ink transition-colors hover:border-forest hover:text-forest focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest">Подушка безпеки</button>
+              <button type="button" data-sp-preset="study" class="min-h-11 rounded-xl border border-line px-3 py-2 text-sm font-semibold text-ink transition-colors hover:border-forest hover:text-forest focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest">Навчання</button>
+              <button type="button" data-sp-preset="car" class="min-h-11 rounded-xl border border-line px-3 py-2 text-sm font-semibold text-ink transition-colors hover:border-forest hover:text-forest focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest">Авто</button>
+            </div>
+
+            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+              <div>
+                <label class="mb-2 block text-sm font-bold" for="sp-initial">Стартова сума, ₴</label>
+                <input id="sp-initial" data-sp="initial" name="initial" type="number" inputmode="decimal"
+                  min="0" max="10000000" step="100" value="10000" required aria-describedby="sp-initial-error"
+                  class="block min-h-11 w-full rounded-xl border border-line bg-white px-4 py-3 text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest" />
+                <p id="sp-initial-error" data-sp-error="initial" class="mt-2 hidden text-sm font-semibold text-red-700" role="alert"></p>
+              </div>
+              <div>
+                <label class="mb-2 block text-sm font-bold" for="sp-term">Строк, місяців</label>
+                <input id="sp-term" data-sp="term" name="term" type="number" inputmode="numeric"
+                  min="1" max="120" step="1" value="12" required aria-describedby="sp-term-error"
+                  class="block min-h-11 w-full rounded-xl border border-line bg-white px-4 py-3 text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest" />
+                <p id="sp-term-error" data-sp-error="term" class="mt-2 hidden text-sm font-semibold text-red-700" role="alert"></p>
+              </div>
+            </div>
+
+            <div class="mt-5">
+              <div class="mb-2 flex items-end justify-between gap-3">
+                <label class="block text-sm font-bold" for="sp-monthly">Щомісячне поповнення, ₴</label>
+              </div>
+              <input id="sp-monthly-range" data-sp="monthlyRange" type="range" min="0" max="100000" step="500" value="1000"
+                aria-label="Щомісячне поповнення, повзунок" class="mb-3 block w-full accent-forest" />
+              <input id="sp-monthly" data-sp="monthly" name="monthly" type="number" inputmode="decimal"
+                min="0" max="100000" step="100" value="1000" required aria-describedby="sp-monthly-error"
+                class="block min-h-11 w-full rounded-xl border border-line bg-white px-4 py-3 text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest" />
+              <p id="sp-monthly-error" data-sp-error="monthly" class="mt-2 hidden text-sm font-semibold text-red-700" role="alert"></p>
+            </div>
+
+            <div class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
+              <div>
+                <label class="mb-2 block text-sm font-bold" for="sp-product">Продукт</label>
+                <select id="sp-product" data-sp="product" name="product"
+                  class="block min-h-11 w-full rounded-xl border border-line bg-white px-4 py-3 text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest">
+                  <option value="savings">Накопичувальний рахунок · 10 %</option>
+                  <option value="deposit" selected>Депозит · 12 %</option>
+                  <option value="bonds">ОВДП · 15 %, без податку</option>
+                </select>
+              </div>
+              <div>
+                <label class="mb-2 block text-sm font-bold" for="sp-goal">Ціль, ₴ <span class="font-normal text-muted">(необов'язково)</span></label>
+                <input id="sp-goal" data-sp="goal" name="goal" type="number" inputmode="decimal"
+                  min="1" max="100000000" step="1000" value="30000" aria-describedby="sp-goal-error"
+                  class="block min-h-11 w-full rounded-xl border border-line bg-white px-4 py-3 text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest" />
+                <p id="sp-goal-error" data-sp-error="goal" class="mt-2 hidden text-sm font-semibold text-red-700" role="alert"></p>
+              </div>
+            </div>
+
+            <fieldset class="mt-5 grid gap-3 sm:grid-cols-2">
+              <legend class="sr-only">Додаткові умови</legend>
+              <label class="flex min-h-11 cursor-pointer items-center gap-3 rounded-xl border border-line px-4 py-3 text-sm font-semibold" for="sp-capitalize">
+                <input id="sp-capitalize" data-sp="capitalize" type="checkbox" checked class="h-5 w-5 accent-forest" />
+                Капіталізація відсотків
+              </label>
+              <label class="flex min-h-11 cursor-pointer items-center gap-3 rounded-xl border border-line px-4 py-3 text-sm font-semibold" for="sp-tax">
+                <input id="sp-tax" data-sp="tax" type="checkbox" checked class="h-5 w-5 accent-forest" />
+                Врахувати податок 23&nbsp;%
+              </label>
+            </fieldset>
+
+            <output id="sp-result" data-sp-result for="sp-initial sp-term sp-monthly sp-product sp-goal sp-capitalize sp-tax"
+              class="mt-6 block rounded-2xl border border-line bg-cream p-5" aria-live="polite">
+              <span class="block text-sm text-muted">Сума в кінці строку</span>
+              <strong data-sp-out="total" class="mt-1 block break-words font-display text-3xl tabular-nums text-forest">—</strong>
+              <dl class="mt-4 grid grid-cols-1 gap-3 text-sm sm:grid-cols-3">
+                <div><dt class="text-muted">Ваші внески</dt><dd data-sp-out="contributed" class="break-words font-bold tabular-nums">—</dd></div>
+                <div><dt class="text-muted">Дохід після податку</dt><dd data-sp-out="interest" class="break-words font-bold tabular-nums">—</dd></div>
+                <div><dt class="text-muted">Податок</dt><dd data-sp-out="tax" class="break-words font-bold tabular-nums">—</dd></div>
+              </dl>
+              <div class="mt-5">
+                <div class="h-3 overflow-hidden rounded-full bg-mint" role="progressbar" aria-label="Прогрес до цілі"
+                  aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-sp-progress>
+                  <div data-sp-out="bar" class="h-full w-0 rounded-full bg-forest transition-all duration-300"></div>
+                </div>
+                <p data-sp-out="goalText" class="mt-2 text-sm text-muted">—</p>
+              </div>
+              <p data-sp-out="status" class="mt-3 hidden text-sm font-semibold text-red-700"></p>
+            </output>
+
+            <button type="reset" data-sp-reset
+              class="mt-5 min-h-11 w-full rounded-xl border border-line bg-white px-6 py-3 font-semibold text-ink transition-colors hover:border-forest hover:text-forest focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest">
+              Скинути до типових значень
+            </button>
           </form>
         </div>
       </section>
